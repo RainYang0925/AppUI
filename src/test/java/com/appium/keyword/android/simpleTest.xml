@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="TestSuite1" parallel="tests" thread-count="2" verbose="1">
+    <test name="test1">
+        <parameter name="deviceNum" value="1" />
+        <classes>
+            <class name="com.appium.keyword.android.AndroidSimpleTest"/>
+        </classes>
+    </test>
+</suite>

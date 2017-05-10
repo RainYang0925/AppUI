@@ -1,0 +1,12 @@
+com.appium.element
+com.appium.keyword
+com.appium.keyword.data
+com.appium.locator
+com.appium.manager
+com.appium.manager.android
+com.appium.manager.ios
+com.appium.pageFactory
+com.appium.service
+com.framework.executor
+com.framework.report
+com.framework.utils

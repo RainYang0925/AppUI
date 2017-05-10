@@ -1,0 +1,19 @@
+
+# 项目忽略文件
+/test-output
+/test-result
+/target
+test-datas/~$*
+
+# Eclipse
+/bin
+/.settings
+.classpath
+.project
+*.class
+
+# IDEA
+/.idea
+*.iml
+
+
