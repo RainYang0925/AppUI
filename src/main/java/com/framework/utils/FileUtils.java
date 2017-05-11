@@ -2,6 +2,7 @@ package com.framework.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -43,7 +44,27 @@ public class FileUtils {
 		}
 		return fis;
 	}
-	
+
+	/**
+	 * 将字符串写入到指定文件中
+	 *
+	 * @param content 写入内容
+	 * @param filePath 文件路径
+	 */
+	public static void writeFile(String content, String filePath) {
+		//先创建文件，再写入
+		createFile(filePath);
+		FileWriter fileWriter;
+		try {
+			fileWriter = new FileWriter(filePath);
+			fileWriter.write(content);
+			fileWriter.flush();
+			fileWriter.close();
+		} catch(IOException e) {
+			logger.catching(e);
+		}
+	}
+
 	/**
 	 * 如果文件不存在，先创建
 	 * 
