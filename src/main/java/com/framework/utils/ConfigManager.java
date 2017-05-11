@@ -3,6 +3,7 @@ package com.framework.utils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
@@ -30,12 +31,19 @@ public class ConfigManager {
     public static final String COMMAND_TIME_OUT = "COMMAND_TIME_OUT";
 
 	private Properties prop = new Properties();
-	private static ConfigManager instance;
 	static Logger logger = LogManager.getLogger();
 	
     private ConfigManager(String configFile) {
         try {
             FileInputStream inputStream = new FileInputStream(configFile);
+            prop.load(inputStream);
+        }catch(IOException e) {
+            logger.catching(e);
+        }
+    }
+
+    private ConfigManager(InputStream inputStream) {
+        try {
             prop.load(inputStream);
         }catch(IOException e) {
             logger.catching(e);
@@ -51,17 +59,10 @@ public class ConfigManager {
     }
 
     public static ConfigManager getInstance() {
-        if (instance == null) {
-            String configFile = "src/main/resources/config.properties";
-            //使用系统变量的 config
-            if (System.getenv().containsKey("CONFIG_FILE")) {
-                configFile = System.getenv().get("CONFIG_FILE");
-                System.out.println("Using config file from " + configFile);
-                logger.info("从 [" + configFile + "] 使用配置文件");
-            }
-            instance = new ConfigManager(configFile);
-        }
-        return instance;
+        //防止打 jar 包后，不能读取包内的配置文件
+        String configFile = "/config.properties";
+        InputStream is = ConfigManager.class.getResourceAsStream(configFile);
+        return new ConfigManager(is);
     }
 
     public boolean containsKey(String key) {
@@ -85,7 +86,6 @@ public class ConfigManager {
         if (excelPath.startsWith(File.separator + "test-datas" + File.separator)) {
             excelPath = System.getProperty("user.dir") + excelPath;
         }
-        System.err.println(excelPath);
         return excelPath;
     }
 
