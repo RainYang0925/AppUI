@@ -31,7 +31,7 @@ public class AndroidParallelTest {
 	public void beforeTest(int deviceNum) throws IOException, InterruptedException {
 		String androidExcelTestPath = ConfigManager.getAndroidExcelName();
 		excelUtils = new ExcelUtils(androidExcelTestPath);
-		engine = new Engine_Excel();
+		engine = new Engine_Excel(androidExcelTestPath);
 		locator = new GetLocator().getAndroidLocator(excelUtils.getAndroidDeviceTestConfig(deviceNum));
 	}
 	

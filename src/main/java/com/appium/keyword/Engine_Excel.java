@@ -27,55 +27,57 @@ import com.framework.report.ExtentManager;
 public class Engine_Excel {
 
 	private Logger logger = LogManager.getLogger();
-	private static ExtentReports extent =
-			ExtentManager.createInstance(ConfigManager.getReportPath() + "ibeiliao-client-report-" + DateTimeUtils.getFileDateTime().replaceAll("\\W", "_") + ".html");
-    private static ThreadLocal<ExtentTest> suiteTest = new ThreadLocal<>();
-    private static ThreadLocal<ExtentTest> pageTest = new ThreadLocal<>();
-    public static ThreadLocal<ExtentTest> elementTest = new ThreadLocal<>();
+	private ExtentReports reports;
+    private ThreadLocal<ExtentTest> suiteTest = new ThreadLocal<>();
+    private ThreadLocal<ExtentTest> pageTest = new ThreadLocal<>();
+    private ThreadLocal<ExtentTest> elementTest = new ThreadLocal<>();
 
-    ConfigManager configManager;
 	private ExcelUtils excelUtils;
-	
 	public static boolean bResult;
-	
 	private final String suiteSheet = KeyWord.SUITESHEET;
 	public String caseSheet;
 	public boolean suiteIsWrited;
 	
 	/**
-	 * 使用默认模块
-	 * 
-	 */
-	public Engine_Excel() {
-		configManager = ConfigManager.getInstance();
-	}
-	
-	/**
-	 * 使用指定的 Excel 文件路径
+	 * 需指定的 Excel 测试用例文档文件路径
 	 * 
 	 * @param fullPath Excel文件路径
 	 * 
 	 */
 	public Engine_Excel(String fullPath) {
-		configManager = ConfigManager.getInstance();
-		setExcelName(fullPath);
+		excelUtils = new ExcelUtils(fullPath);
+		setReportName("test-report-");
 	}
-
-	public void setConfigManager(ConfigManager configManager) {
-		this.configManager = configManager;
+	
+	/**
+	 * 需指定的 Excel 测试用例文档文件路径,测试报告
+	 * 
+	 * @param fullPath Excel文件路径
+	 * @param reportName 测试报告名称
+	 * 
+	 */
+	public Engine_Excel(String fullPath, String reportName) {
+		excelUtils = new ExcelUtils(fullPath);
+		setReportName(reportName);
 	}
-
-	public void setExcelName(String excelPath) {
-		excelUtils = new ExcelUtils(excelPath);
+	
+	/**
+	 * 设置测试报告名字
+	 * 
+	 * @param reportName 测试报告名字
+	 */
+	public void setReportName(String reportName) {
+		String reportFile = ConfigManager.getReportPath() + reportName + DateTimeUtils.getFileDateTime() + ".html";
+		reports = ExtentManager.createInstance(reportFile, reportName);
 	}
-
+	
 	/**
 	 * 测试页面的调用方法
 	 * 
-	 * @param actionKeyWords {@link com.appium.keyword.BaseKeyWord}
+	 * @param actionKeyWord {@link com.appium.keyword.BaseKeyWord}
 	 * 
 	 */
-	public synchronized void runTest(BaseKeyWord actionKeyWords) {
+	public synchronized void runTest(BaseKeyWord actionKeyWord) {
 		bResult = true;
 		suiteIsWrited = false;
 		SuiteDatas suiteDatas;
@@ -91,11 +93,11 @@ public class Engine_Excel {
 				caseSheet = suiteDatas.getCaseSheet();
 				
 				//测试场景为运行状态，且找到相应的 sheet，才执行测试
-				if (excelUtils.isSheetExist(caseSheet) && actionKeyWords.getCaseSheet().equals(caseSheet)) {
+				if (excelUtils.isSheetExist(caseSheet) && actionKeyWord.getCaseSheet().equals(caseSheet)) {
 					String suiteDesc = suiteDatas.getSuiteDesc();
 					
 					//每个场景测试，在测试报告都显示在第一重（测试报告代码）
-					ExtentTest suiteExtent = extent.createTest(suiteDesc);
+					ExtentTest suiteExtent = reports.createTest(suiteDesc);
 					suiteTest.set(suiteExtent);
 					logger.info("正在测试：" + suiteDesc);
 					
@@ -118,7 +120,7 @@ public class Engine_Excel {
 							//获取 Excel 数据源测试数据
 							String keyword = caseDatas.getAppElement().getKeyWord();
 							//设置当前正在测试的测试用例数据
-							actionKeyWords.setAppElement(caseDatas.getAppElement());
+							actionKeyWord.setAppElement(caseDatas.getAppElement());
 							
 							//如果关键字为空，直接跳过运行方法
 							if (StringUtils.isNotEmpty(keyword)) {
@@ -126,8 +128,8 @@ public class Engine_Excel {
 								ExtentTest elementExtentTest = pageTest.get().createNode(caseDatas.getAppElement().getElementLocation().toString());
 								elementTest.set(elementExtentTest);
 								
-								actionKeyWords.setTestData(caseDatas.getTestInputData());
-								this.action(actionKeyWords, caseRowNum);
+								actionKeyWord.setTestData(caseDatas.getTestInputData());
+								this.action(actionKeyWord, caseRowNum);
 							} else {
 								ExcelUtils.setCellData(caseSheet, caseRowNum, CasesParameters.test_result_cell_num, TestResult.PASS);
 							}
@@ -154,17 +156,9 @@ public class Engine_Excel {
 				logger.info("没有执行的测试用例。");
 				continue;
 			}
-		}		
-	}
-	
-	/**
-	 * 获取未输出的测试报告
-	 * 
-	 * @return ExtentReports{@link com.aventstack.extentreports.ExtentReports}
-	 * 
-	 */
-	public static synchronized ExtentReports getExtentReports() {
-		return extent;
+		}
+		//走完每个场景的测试用例，都会去设置一次测试报告
+		actionKeyWord.locator.setTestReport(reports);
 	}
 	
 	/**
@@ -201,9 +195,9 @@ public class Engine_Excel {
 							+ ".png";
 					actionKeyWord.getLocator().getScreenShot(screenShotName);
 					try {
-						Engine_Excel.elementTest.get()
-								.fail(elementName + "测试失败。\n")
-								.fail(e, MediaEntityBuilder.createScreenCaptureFromPath(screenShotName).build());
+						elementTest.get()
+						.fail(elementName + "测试失败。\n")
+						.fail(e, MediaEntityBuilder.createScreenCaptureFromPath(screenShotName).build());
 					} catch (IOException e1) {
 						logger.error("填写测试结果失败\n", e);
 					}

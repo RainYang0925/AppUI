@@ -26,7 +26,7 @@ public class DateTimeUtils {
 	 * 
 	 */
 	public static String getFileDateTime() {
-		return formatedTime("yyyy-MM-dd HH.mm.ss.SSS");
+		return formatedTime("yyyy_MM_dd_HH_mm_ss");
 	}
 
 	/**

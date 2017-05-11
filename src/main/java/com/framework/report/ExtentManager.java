@@ -23,29 +23,18 @@ public class ExtentManager {
     private static ExtentReports extent;
 
     /**
-     * 测试报告初始化，默认使用项目的 report 文件夹
-     *
-     * @return 测试报告
-     */
-    public static ExtentReports getInstance() {
-    	if (extent == null)
-    		createInstance("report/ibeiliao-client-report.html");
-        return extent;
-    }
-
-    /**
      * 测试报告初始化，需要指定测试报告生成路径
      *
      * @param fileName 测试报告生成路径
      * @return 测试报告
      */
-    public synchronized static ExtentReports createInstance(String fileName) {
+    public synchronized static ExtentReports createInstance(String fileName, String reportName) {
     	FileUtils.createFile(fileName);
         ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(fileName);
         //设置页面名称
-        htmlReporter.config().setDocumentTitle("贝聊客户端测试报告");
+        htmlReporter.config().setDocumentTitle(reportName);
         //设置测试报告名称
-        htmlReporter.config().setReportName("贝聊客户端测试报告");
+        htmlReporter.config().setReportName(reportName);
         //设置编码，utf-8支持中文
         htmlReporter.config().setEncoding("UTF-8");
         //设置图表的位置

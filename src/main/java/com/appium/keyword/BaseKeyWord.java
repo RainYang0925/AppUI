@@ -31,36 +31,11 @@ public abstract class BaseKeyWord implements KeyWord {
 	protected AppElement appElement;
 	protected By elementBy;
 	protected String testData;
-	protected String result;
 
 	public BaseKeyWord() {
 		SleepUtils.threadSleepBySeconds(2);
 	}
 	
-	/**
-	 * 获取测试结果
-	 * 
-	 * @return 测试结果
-	 */
-	public String getTestResult() {
-		return result;
-	}
-	
-	/**
-	 * 根据传进的参数判断测试是否通过
-	 * 
-	 * @param result 测试结果
-	 */
-	public void setTestResult(String result) {
-		if (result.equalsIgnoreCase(TestResult.PASS)) {
-			result = TestResult.PASS;
-		} else if (result.equalsIgnoreCase(TestResult.SKIP)) {
-			result = TestResult.SKIP;
-		} else {
-			result = TestResult.FAIL;
-		}
-	}
-
 	@Override
 	public AppLocator<MobileElement> getLocator() {
 		return locator;

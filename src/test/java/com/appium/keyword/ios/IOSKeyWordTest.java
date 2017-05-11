@@ -29,7 +29,7 @@ public class IOSKeyWordTest {
 		String iOSExcelTestPath = ConfigManager.getIOSExcelName();
 		excelUtils = new ExcelUtils(iOSExcelTestPath);
 		locator = new GetLocator().getIOSLocator(excelUtils.getIOSDeviceTestConfig(1));
-		keywordTest = new Engine_Excel();
+		keywordTest = new Engine_Excel(iOSExcelTestPath);
 	}
 
 	@Test

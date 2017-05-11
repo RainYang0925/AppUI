@@ -22,6 +22,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import com.appium.keyword.Engine_Excel;
 import com.appium.manager.DeviceInfo;
 import com.appium.service.AppiumDriverWait;
+import com.aventstack.extentreports.ExtentReports;
 import com.framework.utils.FileUtils;
 
 import io.appium.java_client.AppiumDriver;
@@ -45,6 +46,7 @@ public class AppLocator<T extends MobileElement> implements Locator<T> {
 	private AppiumDriverLocalService service;
 	protected MyElement myElement;
 	protected TouchAction touch;
+	protected ExtentReports reports;
 
 	/**
 	 * 构造函数，设置 appium driver
@@ -362,10 +364,24 @@ public class AppLocator<T extends MobileElement> implements Locator<T> {
 		}
 	}
 
+	/**
+	 * 设置 Appium 的启动服务
+	 * 
+	 * @param service Appium的启动服务
+	 */
 	public void setAppiumDriverLocalService(AppiumDriverLocalService service) {
 		this.service = service;
 	}
 
+	/**
+	 * 设置测试报告
+	 * 
+	 * @param reports 测试报告
+	 */
+	public void setTestReport(ExtentReports reports) {
+		this.reports = reports;
+	}
+	
 	/**
 	 * 封装 Selenium 的 quit 方法
 	 * 
@@ -376,7 +392,9 @@ public class AppLocator<T extends MobileElement> implements Locator<T> {
 				logger.info("退出 driver: " + driver.toString());
 				driver.quit();
 				//如果使用关键字驱动测试的话，才会输出测试报告
-				Engine_Excel.getExtentReports().flush();
+				if (reports != null) {
+					reports.flush();
+				}
 			}
 			service.stop();
 		} catch (WebDriverException e) {
