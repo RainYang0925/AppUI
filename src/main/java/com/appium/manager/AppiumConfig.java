@@ -33,5 +33,5 @@ public interface AppiumConfig {
     
     void rebootDevice(String udid);
     
-    void getDeviceLog(String udid, String logFile);
+    String getDeviceLog(String udid);
 }

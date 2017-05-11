@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.framework.utils.FileUtils;
 import io.appium.java_client.remote.AutomationName;
 import io.appium.java_client.remote.MobilePlatform;
 import org.apache.logging.log4j.LogManager;
@@ -419,20 +418,19 @@ public class AndroidConfig implements AppiumConfig {
 	 * 获取指定设备的日志
 	 * 
 	 * @param deviceID 设备号
-	 * @param logFilePath 输出文件路径
-	 *
 	 * @return 日志详情
 	 */
 	@Override
-	public void getDeviceLog(String deviceID, String logFilePath) {
-		String command = "adb -s " + deviceID + " logcat -d";
+	public String getDeviceLog(String deviceID) {
+		String command = "adb -s " + deviceID + " logcat";
+		String log = null;
 		try {
-			String log = cmd.runCommand(command);
-			FileUtils.writeFile(log, logFilePath);
+			log = cmd.runCommand(command);
 			logger.info("在设备 [" + deviceID + "] 获取日志成功");
 		} catch (Exception e) {
 			logger.error("在设备 [" + deviceID + "] 获取日志出现错误\n", e);
 		}
+		return log;
 	}
 	
 	/**
