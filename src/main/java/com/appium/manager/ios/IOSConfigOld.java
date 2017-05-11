@@ -363,7 +363,7 @@ public class IOSConfigOld implements AppiumConfig {
 	 * @return 日志详情
 	 */
     @Override
-	public String getDeviceLog(String udid) {
+	public void getDeviceLog(String udid, String logFile) {
 		String command = "idevicesyslog -u " + udid;
 		String log = null;
 		try {
@@ -372,7 +372,6 @@ public class IOSConfigOld implements AppiumConfig {
 		} catch (Exception e) {
 			logger.error("在设备 [" + udid + "] 获取日志出现错误\n", e);
 		}
-		return log;
 	}
     
 	/**
