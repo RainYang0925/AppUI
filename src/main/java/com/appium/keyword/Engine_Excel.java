@@ -46,7 +46,7 @@ public class Engine_Excel {
 	 */
 	public Engine_Excel(String fullPath) {
 		excelUtils = new ExcelUtils(fullPath);
-		setReportName("test-report-");
+		setReportName("Test-Report");
 	}
 	
 	/**
@@ -67,7 +67,7 @@ public class Engine_Excel {
 	 * @param reportName 测试报告名字
 	 */
 	public void setReportName(String reportName) {
-		String reportFile = ConfigManager.getReportPath() + reportName + DateTimeUtils.getFileDateTime() + ".html";
+		String reportFile = ConfigManager.getReportPath() + reportName + "-" + DateTimeUtils.getFileDateTime() + ".html";
 		reports = ExtentManager.createInstance(reportFile, reportName);
 	}
 	
