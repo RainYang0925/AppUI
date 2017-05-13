@@ -418,11 +418,12 @@ public class AndroidConfig implements AppiumConfig {
 	 * 获取指定设备的日志
 	 * 
 	 * @param deviceID 设备号
+	 *
 	 * @return 日志详情
 	 */
 	@Override
 	public String getDeviceLog(String deviceID) {
-		String command = "adb -s " + deviceID + " logcat";
+		String command = "adb -s " + deviceID + " logcat -d";
 		String log = null;
 		try {
 			log = cmd.runCommand(command);
