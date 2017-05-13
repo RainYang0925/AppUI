@@ -84,7 +84,7 @@
 	<dependency>
 	    <groupId>com.aventstack</groupId>
 	    <artifactId>extentreports</artifactId>
-	    <version>3.0.5</version>
+	    <version>3.0.6</version>
 	</dependency>
 	<!-- Java模板引擎 FreeMarker -->
 	<dependency>
