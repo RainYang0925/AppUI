@@ -263,10 +263,27 @@ public class AndroidConfig implements AppiumConfig {
 	 * @param deviceID 设备号
 	 */
 	public void unlockDevice(String deviceID) {
-		String command = "adb -s " + deviceID + " shell input keyevent 82";
+		//点击菜单键（数字为82）
+		String command = "adb -s " + deviceID + " shell input keyevent KEYCODE_MENU";
 		try {
 			cmd.runCommand(command);
 			logger.info("在设备 [" + deviceID + "] 解锁成功");
+		} catch (IOException e) {
+			logger.catching(e);
+		}
+	}
+
+	/**
+	 * 锁定指定设备
+	 *
+	 * @param deviceID 设备号
+	 */
+	public void lockDevice(String deviceID) {
+		//点击挂机键（数字为6）
+		String command = "adb -s " + deviceID + " shell input keyevent KEYCODE_ENDCALL";
+		try {
+			cmd.runCommand(command);
+			logger.info("在设备 [" + deviceID + "] 锁屏成功");
 		} catch (IOException e) {
 			logger.catching(e);
 		}
