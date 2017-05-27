@@ -70,8 +70,13 @@ public class GetLocator {
 		capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, deviceConfig.get(AndroidMobileCapabilityType.APP_ACTIVITY));
 		//android 的自动化测试引擎
 		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, android.getAutomatorName(deviceID));
-		if (android.getAutomatorName(deviceID).equalsIgnoreCase(AutomationName.ANDROID_UIAUTOMATOR2)) {
-			capabilities.setCapability("systemPort", new HttpUtils().getPort());
+		if (android.getAutomatorName(deviceID).equals(AutomationName.ANDROID_UIAUTOMATOR2)) {
+			//指定UIAutomator2的端口号
+			capabilities.setCapability(AndroidMobileCapabilityType.SYSTEM_PORT, new HttpUtils().getPort());
+			//使用 adb 命令解锁手机，跳过 Appium
+			android.unlockDevice(deviceID);
+			//跳过解锁的进程
+			capabilities.setCapability("skipUnlock", Boolean.TRUE);
 		}
 		//设置命令启动超时时间
 		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, Integer.parseInt(config.getProperty(ConfigManager.COMMAND_TIME_OUT)));

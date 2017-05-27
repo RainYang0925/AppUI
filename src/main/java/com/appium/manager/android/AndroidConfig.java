@@ -257,6 +257,21 @@ public class AndroidConfig implements AppiumConfig {
         return false;
     }
 
+	/**
+	 * 解锁指定设备
+	 *
+	 * @param deviceID 设备号
+	 */
+	public void unlockDevice(String deviceID) {
+		String command = "adb -s " + deviceID + " shell input keyevent 82";
+		try {
+			cmd.runCommand(command);
+			logger.info("在设备 [" + deviceID + "] 解锁成功");
+		} catch (IOException e) {
+			logger.catching(e);
+		}
+	}
+
     /**
      * 安装指定应用
      * 
