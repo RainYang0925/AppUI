@@ -86,7 +86,7 @@ public class GetLocator {
 		capabilities.setCapability(MobileCapabilityType.APP, FileUtils.getAbsolutePath(deviceConfig.get(MobileCapabilityType.APP)));
 		//确认是否需要重新安装被测应用
 		if (android.checkAppIsInstalled(deviceID, app_package)) {
-			//android.clearAppData(deviceID, config.getProperty(ConfigManager.APP_PACKAGE));
+			//android.clearAppData(deviceID, deviceConfig.get(AndroidMobileCapabilityType.APP_PACKAGE));
 		} else {
 			android.installApp(deviceID, app_package);
 		}
@@ -105,6 +105,8 @@ public class GetLocator {
 			locator = new AndroidLocator<>(driver);
 			locator.setAppiumDriverLocalService(appiumDriverLocalService);
 			logger.info(" AndroidDriver 创建成功");
+			//成功初始化后，使用 adb 命令解锁，防止屏幕已熄灭
+			android.unlockDevice(deviceID);
 		} catch (MalformedURLException e) {
 			logger.error(" AndroidDriver 创建失败\n", e);
 		} catch (WebDriverException e) {
