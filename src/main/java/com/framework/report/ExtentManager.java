@@ -26,6 +26,7 @@ public class ExtentManager {
      * 测试报告初始化，需要指定测试报告生成路径
      *
      * @param fileName 测试报告生成路径
+     * @param reportName 测试报告的名称
      * @return 测试报告
      */
     public synchronized static ExtentReports createInstance(String fileName, String reportName) {
