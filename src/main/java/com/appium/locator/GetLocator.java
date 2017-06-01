@@ -1,26 +1,25 @@
 package com.appium.locator;
 
+import com.appium.manager.android.AndroidConfig;
+import com.appium.manager.ios.IOSConfig;
+import com.appium.service.AppiumManager;
+import com.framework.utils.ConfigManager;
+import com.framework.utils.FileUtils;
+import com.framework.utils.HttpUtils;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.remote.*;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
-
-import com.appium.manager.android.AndroidConfig;
-import com.appium.manager.ios.IOSConfig;
-import com.appium.service.AppiumManager;
-import com.framework.utils.*;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.remote.DesiredCapabilities;
-
-import io.appium.java_client.remote.*;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.service.local.AppiumDriverLocalService;
 
 /**
  * 封装获取 driver 的方法，参数都是默认从参数类获取

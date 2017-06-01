@@ -1,21 +1,19 @@
 package com.appium.element;
 
-import io.appium.java_client.MobileElement;
+import com.appium.keyword.Engine_Excel;
+import com.appium.locator.AppLocator;
+import com.appium.locator.Locator;
+import com.framework.utils.SleepUtils;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.MultiTouchAction;
 import io.appium.java_client.TouchAction;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriverException;
-
-import com.appium.locator.AppLocator;
-import com.appium.locator.Locator;
-import com.appium.keyword.Engine_Excel;
-import com.framework.utils.SleepUtils;
 
 import java.time.Duration;
 import java.util.ArrayList;

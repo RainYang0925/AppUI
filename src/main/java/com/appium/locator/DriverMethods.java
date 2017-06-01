@@ -1,8 +1,7 @@
 package com.appium.locator;
 
-import org.openqa.selenium.WebDriver;
-
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.WebDriver;
 
 /**
  * 判断 driver 的一些方法，判断是否为空，sessionId 是否为空

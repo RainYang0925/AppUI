@@ -1,17 +1,15 @@
 package com.appium.locator;
 
-import java.util.List;
-
 import com.appium.element.MyElement;
 import com.appium.manager.android.AndroidDeviceInfo;
-
-import org.openqa.selenium.WebDriverException;
-
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
+import org.openqa.selenium.WebDriverException;
+
+import java.util.List;
 
 /**
  * Android 的定位类，用来封装  AndroidDriver，直接调用

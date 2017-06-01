@@ -1,10 +1,8 @@
 package com.appium.keyword.data;
 
-import org.openqa.selenium.By;
-
 import com.appium.locator.LocatorType;
-
 import io.appium.java_client.MobileBy;
+import org.openqa.selenium.By;
 
 /**
  * 元素的定位信息类：包含定位类型、定位内容

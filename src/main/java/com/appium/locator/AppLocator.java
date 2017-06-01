@@ -1,16 +1,15 @@
 package com.appium.locator;
 
-import java.io.File;
-import java.io.IOException;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
 import com.appium.element.MyElement;
+import com.appium.keyword.Engine_Excel;
+import com.appium.manager.DeviceInfo;
+import com.appium.service.AppiumDriverWait;
+import com.aventstack.extentreports.ExtentReports;
+import com.framework.utils.FileUtils;
 import com.framework.utils.SleepUtils;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -19,15 +18,14 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 
-import com.appium.keyword.Engine_Excel;
-import com.appium.manager.DeviceInfo;
-import com.appium.service.AppiumDriverWait;
-import com.aventstack.extentreports.ExtentReports;
-import com.framework.utils.FileUtils;
-
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileElement;
+import java.io.File;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 定位类，用来封装 AppiumDriver，替代 driver 使用，

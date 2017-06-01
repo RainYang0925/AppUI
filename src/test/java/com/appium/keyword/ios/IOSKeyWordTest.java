@@ -1,22 +1,16 @@
 package com.appium.keyword.ios;
 
-import java.io.IOException;
-
-import com.framework.utils.ConfigManager;
-import com.framework.utils.ExcelUtils;
-import com.framework.utils.SleepUtils;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-
 import com.appium.keyword.Engine_Excel;
 import com.appium.locator.AppLocator;
 import com.appium.locator.GetLocator;
-
+import com.framework.utils.ConfigManager;
+import com.framework.utils.ExcelUtils;
 import io.appium.java_client.MobileElement;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class IOSKeyWordTest {
 	

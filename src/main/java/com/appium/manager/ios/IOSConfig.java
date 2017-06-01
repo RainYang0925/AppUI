@@ -1,5 +1,14 @@
 package com.appium.manager.ios;
 
+import com.appium.manager.AppiumConfig;
+import com.framework.executor.ProcessCommand;
+import com.framework.utils.ConfigManager;
+import com.framework.utils.StringUtils;
+import io.appium.java_client.remote.AutomationName;
+import io.appium.java_client.remote.MobilePlatform;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,16 +16,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
-import com.framework.utils.ConfigManager;
-import io.appium.java_client.remote.AutomationName;
-import io.appium.java_client.remote.MobilePlatform;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import com.appium.manager.AppiumConfig;
-import com.framework.executor.ProcessCommand;
-import com.framework.utils.StringUtils;
 
 /**
  * ios 操作类，可通过 ideviceinstaller 或 ios-deploy 命令进行操作

@@ -1,18 +1,15 @@
 package com.appium.keyword;
 
-import java.util.List;
-
+import com.appium.element.MyElement;
+import com.appium.keyword.data.AppElement;
+import com.appium.locator.AppLocator;
 import com.framework.utils.SleepUtils;
-import com.framework.utils.TestResult;
-
+import io.appium.java_client.MobileElement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 
-import com.appium.locator.AppLocator;
-import com.appium.element.MyElement;
-import com.appium.keyword.data.AppElement;
-import io.appium.java_client.MobileElement;
+import java.util.List;
 
 /**
  * 关键字驱动的抽象类，实现一些基本的公共方法

@@ -1,16 +1,15 @@
 package com.framework.utils;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.appium.keyword.data.CaseDatas;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.appium.keyword.data.CaseDatas;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ExcelUtilsTest {
 

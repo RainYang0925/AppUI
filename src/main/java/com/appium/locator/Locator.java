@@ -1,14 +1,13 @@
 package com.appium.locator;
 
-import java.util.List;
-
 import com.appium.element.MyElement;
 import com.appium.manager.DeviceInfo;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
+import java.util.List;
 
 /**
  * 定位类，用来封装 AppiumDriver，但只是一个接口

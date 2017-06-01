@@ -1,31 +1,16 @@
 package com.appium.keyword.ios;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import com.appium.element.MyElement;
 import com.appium.keyword.Engine_Excel;
 import com.appium.locator.AppLocator;
 import com.appium.locator.GetLocator;
 import com.framework.utils.ConfigManager;
 import com.framework.utils.ExcelUtils;
-import io.appium.java_client.service.local.AppiumDriverLocalService;
-import io.appium.java_client.service.local.AppiumServiceBuilder;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.*;
-
-import com.appium.locator.IOSLocator;
-
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.remote.AutomationName;
-import io.appium.java_client.remote.IOSMobileCapabilityType;
-import io.appium.java_client.remote.MobileCapabilityType;
-import io.appium.java_client.remote.MobilePlatform;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class IosSimulatorTest {
 

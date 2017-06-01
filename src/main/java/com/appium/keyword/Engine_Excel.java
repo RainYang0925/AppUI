@@ -1,13 +1,5 @@
 package com.appium.keyword;
 
-import com.framework.utils.*;
-
-import java.io.IOException;
-import java.lang.reflect.Method;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.appium.keyword.data.CaseDatas;
 import com.appium.keyword.data.CasesParameters;
 import com.appium.keyword.data.SuiteDatas;
@@ -16,6 +8,12 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.framework.report.ExtentManager;
+import com.framework.utils.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 /**
  * 关键字驱动，以 Excel 文件为数据源，进行处理，如更改 Excel 文件表格的格式，需重新更改或新增与 Excel 文件对应的类

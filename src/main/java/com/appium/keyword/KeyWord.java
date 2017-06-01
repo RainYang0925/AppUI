@@ -1,12 +1,11 @@
 package com.appium.keyword;
 
-import java.util.List;
-
-import com.appium.locator.AppLocator;
 import com.appium.element.MyElement;
 import com.appium.keyword.data.AppElement;
-
+import com.appium.locator.AppLocator;
 import io.appium.java_client.MobileElement;
+
+import java.util.List;
 
 /**
  * 关键字驱动接口

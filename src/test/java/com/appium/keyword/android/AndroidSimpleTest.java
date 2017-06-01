@@ -1,16 +1,17 @@
 package com.appium.keyword.android;
 
-import java.io.IOException;
-
-import org.testng.annotations.*;
-
 import com.appium.keyword.Engine_Excel;
 import com.appium.locator.AndroidLocator;
 import com.appium.locator.GetLocator;
 import com.framework.utils.ConfigManager;
 import com.framework.utils.ExcelUtils;
-
 import io.appium.java_client.MobileElement;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class AndroidSimpleTest {
 	

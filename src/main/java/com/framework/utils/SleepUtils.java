@@ -1,9 +1,8 @@
 package com.framework.utils;
 
+import com.appium.locator.Locator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import com.appium.locator.Locator;
 
 /**
  * 封装线程等待方法

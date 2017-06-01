@@ -1,8 +1,7 @@
 package com.appium.service;
 
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * 简单封装 Selenium 的 WebDriverWait 方法，实现移动端的元素等待

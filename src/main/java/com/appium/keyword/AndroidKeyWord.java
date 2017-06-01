@@ -2,7 +2,6 @@ package com.appium.keyword;
 
 import com.appium.element.Swipes;
 import com.framework.utils.SleepUtils;
-
 import io.appium.java_client.MobileBy;
 
 /**

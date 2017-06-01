@@ -1,5 +1,8 @@
 package com.appium.service;
 
+import com.framework.utils.ConfigManager;
+import com.framework.utils.DateTimeUtils;
+import com.framework.utils.FileUtils;
 import com.framework.utils.HttpUtils;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -7,18 +10,13 @@ import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.AndroidServerFlag;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 import io.appium.java_client.service.local.flags.ServerArgument;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import com.framework.utils.ConfigManager;
-import com.framework.utils.DateTimeUtils;
-import com.framework.utils.FileUtils;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
 /**
  * 用于启动和关闭 Appium 服务:

@@ -1,12 +1,10 @@
 package com.appium.element;
 
+import com.appium.locator.Locator;
+import io.appium.java_client.MobileElement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Dimension;
-
-import com.appium.locator.Locator;
-
-import io.appium.java_client.MobileElement;
 
 /**
  * 滑动功能脚本（Appium_Java）包含：上滑、下滑、左滑、右滑、滑动返回、下滑通知中心、收回通知中心，左滑元素

@@ -1,19 +1,18 @@
 package com.appium.manager.android;
 
+import com.appium.manager.AppiumConfig;
+import com.framework.executor.ProcessCommand;
+import io.appium.java_client.remote.AutomationName;
+import io.appium.java_client.remote.MobilePlatform;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import io.appium.java_client.remote.AutomationName;
-import io.appium.java_client.remote.MobilePlatform;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import com.appium.manager.AppiumConfig;
-import com.framework.executor.ProcessCommand;
 
 /**
  * Android adb 操作类，可通过 adb 命令进行操作

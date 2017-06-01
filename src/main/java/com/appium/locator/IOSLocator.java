@@ -1,20 +1,18 @@
 package com.appium.locator;
 
-import java.time.Duration;
-import java.util.List;
-import java.util.Map;
-
 import com.appium.element.MyElement;
+import com.appium.element.Swipes;
 import com.appium.manager.ios.IOSDeviceInfo;
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriverException;
 
-import com.appium.element.Swipes;
-
-import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.ios.IOSDriver;
+import java.time.Duration;
+import java.util.List;
+import java.util.Map;
 
 /**
  * iOS 的定位类，用来封装  IOSDriver，直接调用
