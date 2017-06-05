@@ -83,10 +83,10 @@ public class Engine_Excel {
 		for(int i = 1; i <= excelUtils.getLastRowNums(suiteSheet); i ++) {//从1开始，忽略第一行的表头
 			//先获取测试集合的数据
 			suiteDatas = excelUtils.getTestSuite(suiteSheet, i);
-			String Runmode = suiteDatas.getRunMode();
+			String runMode = suiteDatas.getRunMode();
 			
 			//先确定该测试场景是否运行，且不能为空
-			if (StringUtils.isNotEmpty(Runmode) && Runmode.equalsIgnoreCase("YES")) {
+			if (runMode.equalsIgnoreCase("YES")) {
 				//获取测试的sheet
 				caseSheet = suiteDatas.getCaseSheet();
 				
@@ -148,7 +148,8 @@ public class Engine_Excel {
 					suiteIsWrited = false;
 				} else {
 					//如果测试用例需要执行，但找不到相应的 sheet 页，在测试场景sheet，返回失败的测试结果
-					//ExcelUtils.setCellData(suiteSheet, i, ExcelData.SuiteResultNum, TestResult.FAIL);
+					ExcelUtils.setCellData(suiteSheet, i, SuiteParameters.SuiteResultNum, TestResult.FAIL);
+					logger.warn("找不到测试的 sheet 页：" + suiteDatas.getCaseSheet());
 				}
 			} else {
 				logger.info("没有执行的测试用例。");

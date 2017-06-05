@@ -7,7 +7,7 @@ package com.appium.keyword.data;
 public interface SuiteParameters {
 	//测试集合页的表头设置
 	String SuiteSheetName = "测试场景";		//测试集合sheet的名称
-	int SUITE_READ_DATA_CELL_NUM = 4;
+	int SUITE_CONFIG_CELL_NUMS = 4;
 	
 	int TestSuiteIDNum = 0;					//测试集合id
 	int TestSuiteDescNum = 1;				//测试场景描述

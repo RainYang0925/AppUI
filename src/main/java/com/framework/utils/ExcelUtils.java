@@ -375,7 +375,7 @@ public class ExcelUtils {
 	 * @return 测试场景集合的数据
 	 */
 	public SuiteDatas getTestSuite(String sheetName, int rowNum) {
-		String[] sdatas = readTestDatas(sheetName, rowNum, SuiteParameters.SUITE_READ_DATA_CELL_NUM);
+		String[] sdatas = readTestDatas(sheetName, rowNum, SuiteParameters.SUITE_CONFIG_CELL_NUMS);
 		SuiteDatas suiteDatas = new SuiteDatas(
 				sdatas[SuiteParameters.TestSuiteIDNum],
 				sdatas[SuiteParameters.TestCaseSheetNum],
