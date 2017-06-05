@@ -17,3 +17,5 @@ test-datas/~$*
 *.iml
 
 
+*.ipr
+*.iws

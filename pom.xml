@@ -25,6 +25,11 @@
 					<testTarget>1.8</testTarget>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.5.2</version>
+			</plugin>
 			<!--配置生成Javadoc包-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -116,7 +121,7 @@
 	<dependency>
 	    <groupId>com.aventstack</groupId>
 	    <artifactId>extentreports</artifactId>
-	    <version>3.0.5</version>
+	    <version>3.0.6</version>
 	</dependency>
 	<!-- Java模板引擎 FreeMarker -->
 	<dependency>
