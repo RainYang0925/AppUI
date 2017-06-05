@@ -128,6 +128,31 @@ public class MyElement {
 	}
 
 	/**
+	 * 判断元素是否已选择
+	 *
+	 * @return true or false
+	 */
+	public boolean isSelected() {
+		boolean result;
+		try {
+			result = element.isSelected();
+		} catch (Exception e) {
+			result = false;
+		}
+		return result;
+	}
+
+	public boolean isEnabled() {
+		boolean result;
+		try {
+			result = element.isEnabled();
+		} catch (Exception e) {
+			result = false;
+		}
+		return result;
+	}
+
+	/**
 	 * 封装 Appium 的 click 方法
 	 * 
 	 */
