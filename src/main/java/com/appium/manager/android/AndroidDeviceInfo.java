@@ -19,6 +19,7 @@ public class AndroidDeviceInfo implements DeviceInfo {
 	private String packageName;
 	private String startActivity;
 	private String automationName;
+	private String defaultInputMethod;
 	
 	public AndroidDeviceInfo(Capabilities capabilities) {
 		this.deviceID = (String)capabilities.getCapability(MobileCapabilityType.UDID);
@@ -28,6 +29,7 @@ public class AndroidDeviceInfo implements DeviceInfo {
 		this.automationName = (String)capabilities.getCapability(MobileCapabilityType.AUTOMATION_NAME);
 		this.packageName = (String)capabilities.getCapability(AndroidMobileCapabilityType.APP_PACKAGE);
 		this.startActivity = (String)capabilities.getCapability(AndroidMobileCapabilityType.APP_ACTIVITY);
+		defaultInputMethod = new AndroidConfig().getDefaultInputMethod(deviceID);
 	}
 
 	@Override
@@ -56,6 +58,10 @@ public class AndroidDeviceInfo implements DeviceInfo {
 
 	public String getStartActivity() {
 		return startActivity;
+	}
+
+	public String getDefaultInputMethod() {
+		return defaultInputMethod;
 	}
 
 	@Override

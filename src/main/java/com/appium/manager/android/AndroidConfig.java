@@ -435,7 +435,7 @@ public class AndroidConfig implements AppiumConfig {
 	 * @param input_method 需要设置的输入法名称
 	 * 
 	 * */
-	public void setInputMethod(String deviceID, String input_method) {
+	public void setDefaultInputMethod(String deviceID, String input_method) {
 		String command = "adb -s " + deviceID + " shell settings put secure default_input_method " + input_method;
 		try {
 			cmd.runCommand(command);

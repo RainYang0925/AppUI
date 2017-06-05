@@ -172,12 +172,13 @@ public class Engine_Excel {
 		Method[] methods = actionKeyWord.getClass().getMethods();
 		for(int i = 0; i < methods.length; i ++) {
 			String keyword = actionKeyWord.getAppElement().getKeyWord();
-			if(methods[i].getName().trim().equals(keyword)) {
+			String runMethod = methods[i].getName();
+			if(runMethod.equals(keyword)) {
 				String pageName = actionKeyWord.getAppElement().getElementLocation().getPageName();
 				String elementName = actionKeyWord.getAppElement().getElementLocation().getElementName();
 				try {
 					logger.info("正在 \"" + pageName + "\" 页面，测试 \"" + elementName + "\"");
-					logger.info("在 \"" + actionKeyWord.getClass().getName() + "\" 运行 \"" + methods[i].getName() + "\" 方法。");
+					logger.info("在 \"" + actionKeyWord.getClass().getName() + "\" 运行 \"" + runMethod + "\" 方法。");
 					//调用指定关键字的方法
 					methods[i].invoke(actionKeyWord);
 					elementTest.get().info(elementName + " 测试通过");

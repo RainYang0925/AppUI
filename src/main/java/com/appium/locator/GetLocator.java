@@ -1,7 +1,9 @@
 package com.appium.locator;
 
 import com.appium.manager.android.AndroidConfig;
+import com.appium.manager.android.AndroidDeviceInfo;
 import com.appium.manager.ios.IOSConfig;
+import com.appium.manager.ios.IOSDeviceInfo;
 import com.appium.service.AppiumManager;
 import com.framework.utils.ConfigManager;
 import com.framework.utils.FileUtils;
@@ -93,6 +95,8 @@ public class GetLocator {
 
 		logger.info("the capability: " + capabilities.toString());
 
+		//初始化设备信息，等待 Locator 初始化完后设置，防止获取的默认输入法错误
+		AndroidDeviceInfo deviceInfo = new AndroidDeviceInfo(capabilities);
 		AndroidDriver<MobileElement> driver;
 		AndroidLocator<MobileElement> locator = null;
 		//启动 Appium 服务
@@ -103,6 +107,7 @@ public class GetLocator {
 			driver = new AndroidDriver<>(new URL(appiumManager.getAppiumUrl().toString()), capabilities);
 			locator = new AndroidLocator<>(driver);
 			locator.setAppiumDriverLocalService(appiumDriverLocalService);
+			locator.setDeviceInfo(deviceInfo);
 			logger.info(" AndroidDriver 创建成功");
 			//成功初始化后，使用 adb 命令解锁，防止屏幕已熄灭
 			android.unlockDevice(deviceID);
@@ -161,6 +166,8 @@ public class GetLocator {
 		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, Integer.parseInt(config.getProperty(ConfigManager.COMMAND_TIME_OUT)));
 
 		logger.info("the capability: " + capabilities.toString());
+
+		IOSDeviceInfo deviceInfo = new IOSDeviceInfo(capabilities);
 		IOSDriver<MobileElement> driver;
 		IOSLocator<MobileElement> locator = null;
 		//启动 Appium 服务
@@ -171,6 +178,7 @@ public class GetLocator {
 			driver = new IOSDriver<>(new URL(appiumManager.getAppiumUrl().toString()), capabilities);
 			locator = new IOSLocator<>(driver);
 			locator.setAppiumDriverLocalService(appiumDriverLocalService);
+			locator.setDeviceInfo(deviceInfo);
 			logger.info(" IOSDriver 创建成功");
 		} catch (WebDriverException e) {
 			logger.error(" AppiumService 启动失败\n", e);

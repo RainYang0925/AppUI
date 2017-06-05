@@ -24,6 +24,7 @@ import java.util.Map;
 public class IOSLocator<T extends MobileElement> extends AppLocator<T> {
 	
 	private IOSDriver<T> iosDriver;
+	private IOSDeviceInfo iosDeviceInfo;
 
 	/**
 	 * 构造函数，使用给定的 iosdriver，使用默认的元素等待时间
@@ -50,14 +51,21 @@ public class IOSLocator<T extends MobileElement> extends AppLocator<T> {
 	
 	/**
 	 * 获取 IOSLocator 的 driver，以便使用未封装的方法。
-	 * 
+	 *
+	 * @return IOSDriver {@link io.appium.java_client.ios.IOSDriver}
+	 *
 	 */
 	public IOSDriver<T> getDriver() {
 		return iosDriver;
 	}
-	
+
+	public void setDeviceInfo(IOSDeviceInfo deviceInfo) {
+		this.iosDeviceInfo = deviceInfo;
+	}
+
+	@Override
 	public IOSDeviceInfo getDeviceInfo() {
-		return new IOSDeviceInfo(iosDriver.getCapabilities());
+		return iosDeviceInfo;
 	}
 
 	/**

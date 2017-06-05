@@ -1,6 +1,7 @@
 package com.appium.locator;
 
 import com.appium.element.MyElement;
+import com.appium.manager.android.AndroidConfig;
 import com.appium.manager.android.AndroidDeviceInfo;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
@@ -21,6 +22,8 @@ import java.util.List;
 public class AndroidLocator<T extends MobileElement> extends AppLocator<T> {
 
 	private AndroidDriver<T> androidDriver;
+	private AndroidDeviceInfo androidDeviceInfo;
+	private AndroidConfig androidConfig = new AndroidConfig();
 
 	/**
 	 * 构造函数，使用指定的 AndroidDriver
@@ -49,12 +52,18 @@ public class AndroidLocator<T extends MobileElement> extends AppLocator<T> {
 	 * 获取 AndroidLocator 的 driver，以便使用未封装的方法。
 	 * 
 	 */
+	@Override
 	public AndroidDriver<T> getDriver() {
 		return androidDriver;
 	}
-	
+
+	public void setDeviceInfo(AndroidDeviceInfo deviceInfo) {
+		this.androidDeviceInfo = deviceInfo;
+	}
+
+	@Override
 	public AndroidDeviceInfo getDeviceInfo() {
-		return new AndroidDeviceInfo(androidDriver.getCapabilities());
+		return androidDeviceInfo;
 	}
 
 	/**
@@ -64,7 +73,7 @@ public class AndroidLocator<T extends MobileElement> extends AppLocator<T> {
 	@Override
 	public void quit() {
 		super.quit();
-		//new AndroidConfig().setInputMethod(AndroidDeviceInfos.getUdid(), AndroidDeviceInfos.getDefaultInputMethod());
+		androidConfig.setDefaultInputMethod(androidDeviceInfo.getDeviceID(), androidDeviceInfo.getDefaultInputMethod());
 	}
 	
 	/**
