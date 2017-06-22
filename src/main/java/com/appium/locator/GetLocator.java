@@ -110,7 +110,7 @@ public class GetLocator {
 			locator.setDeviceInfo(deviceInfo);
 			logger.info(" AndroidDriver 创建成功");
 			//成功初始化后，使用 adb 命令解锁，防止屏幕已熄灭
-			android.unlockDevice(deviceID);
+			//android.unlockDevice(deviceID);
 		} catch (MalformedURLException e) {
 			logger.error(" AndroidDriver 创建失败\n", e);
 		} catch (WebDriverException e) {

@@ -257,10 +257,12 @@ public class AndroidConfig implements AppiumConfig {
     }
 
 	/**
-	 * 解锁指定设备
+	 * 解锁指定设备</br>
+	 * 很多设备不支持，不推荐使用</br>
 	 *
 	 * @param deviceID 设备号
 	 */
+	@Deprecated
 	public void unlockDevice(String deviceID) {
 		//点击菜单键（数字为82）
 		String command = "adb -s " + deviceID + " shell input keyevent KEYCODE_MENU";
@@ -273,10 +275,12 @@ public class AndroidConfig implements AppiumConfig {
 	}
 
 	/**
-	 * 锁定指定设备
+	 * 锁定指定设备</br>
+	 * 很多设备不支持，不推荐使用</br>
 	 *
 	 * @param deviceID 设备号
 	 */
+	@Deprecated
 	public void lockDevice(String deviceID) {
 		//点击挂机键（数字为6）
 		String command = "adb -s " + deviceID + " shell input keyevent KEYCODE_ENDCALL";
